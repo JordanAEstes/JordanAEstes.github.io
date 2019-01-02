@@ -43,19 +43,18 @@ function fizzBuzz() {
 function drawChessboard(gridVal) {
 // create a string that represents an 8 x 8 grid using newline charcters to seperate lines.
 var gridStr = "";
-  for (var i = 0; i < gridVal * gridVal; i++){
-    if (i % 8 = 0)
-      gridStr += "\n";
-    //for (var j = 0; j < gridVal; j++){
-      if (j % 2 === 1){
+  for (var i = 0; i < gridVal; i++){
+    for (var j = 0; j < gridVal; j++){
+      if ((i + j) % 2 === 0){
         gridStr += " ";
       }else {
         gridStr += "#";
       }
-    }
-    gridStr += "\n";
   }
-  console.log(gridStr);
+  gridStr += "\n";
+  
+}
+console.log(gridStr);
 }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -24,6 +24,7 @@ console.log(animal)
 
 var noises = [];
 noises[0] = 'whiney';
+noises.push('grunt')
 noises.unshift('neigh');
 noises[noises.length] = 'clop';
 console.log(noises.length);
@@ -35,6 +36,8 @@ console.log(noises);
 //////////////////////////////////////////////////////////////////////
 
 animal['noises'] = noises;
+animal.noises.push('trot');
+console.log(animal);
 
 /* *******************************************************************
  * Step 4 - Review
@@ -95,10 +98,10 @@ animals.push(cat);
 
 var friends = [];
 //arrays are great for holding friends since they are easily iterable and have a specific numerical value
-function getRandom(max){
-    return Math.floor(Math.random() * Math.floor(max));
+function getRandom(array){
+    return Math.floor(Math.random() * Math.floor(array.length));
 }
-friends.push(animals[getRandom(animals.length)].name);
+friends.push(animals[getRandom(animals)].name);
 console.log(friends);
 cat.friends = friends;
 console.log(cat);

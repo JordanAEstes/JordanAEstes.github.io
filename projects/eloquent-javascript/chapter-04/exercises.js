@@ -2,24 +2,53 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range() {
-
+function range(start, end, step = 1) {
+  //using a for loop, add all numbers from start to end to an array
+  var rangeArray = [];
+  if (step < 0){
+    return rangeArray;
+  }
+  if(start === end){ return rangeArray}
+  if(start < end){
+    for (var i = start; i <= end; i += step){
+     rangeArray.push(i); 
+    }
+  } else {
+    for (var i = start; i >= end; i -= step){
+        rangeArray.push(i);
+    }
+  }
+  return rangeArray;
 }
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function sum() {
+function sum(sumArray) {
+//use for loop to iterate through array and add the values stored within
+var finalSum = 0;
+if (sumArray.length === 0){return finalSum}
 
+for (var i = 0; i < sumArray.length; i++){
+  finalSum += sumArray[i]
+}
+return finalSum;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArray ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArray() {
-
+function reverseArray(arrayToRev) {
+// use for loop to iterate over an array and create a new array in reversed order
+  var reversedArray = [];
+  for (var i = arrayToRev.length - 1; i >= 0; i--){
+    reversedArray.push(arrayToRev[i]);
+  }
+  return reversedArray;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
