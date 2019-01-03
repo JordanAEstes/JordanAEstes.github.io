@@ -55,8 +55,16 @@ function reverseArray(arrayToRev) {
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArrayInPlace() {
-
+function reverseArrayInPlace(arrayVal) {
+  // get length of arrayVal
+  var count = arrayVal.length - 1;
+  // loop with for loop
+  for (var i = count; i > 0; i--){
+    //using splice and shift put the values in the reverse order
+    arrayVal.splice(i, 0, arrayVal.shift());
+  }
+  //return arrayVal
+  return arrayVal;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
