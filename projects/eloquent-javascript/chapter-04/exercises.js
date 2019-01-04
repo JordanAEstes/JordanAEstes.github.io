@@ -71,31 +71,55 @@ function reverseArrayInPlace(arrayVal) {
 // arrayToList /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function arrayToList() {
-
+function arrayToList(array) {
+//loop through array and put its contents into lists
+var list = null;
+  for (var i = array.length - 1; i >= 0; i--){
+    list = {
+    value: array[i],
+    rest: list
+    };
+  }
+  return list;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
-
+function listToArray(list) {
+  //create a blank array
+  var arr = [];
+  //use a for loop to iterate through the list and push the values into an array
+  for (var listItem = list; listItem; listItem = listItem.rest){
+    arr.push(listItem.value);
+  }
+  return arr;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
-
+function prepend(newVal, list) {
+  return {
+    value: newVal,
+    rest: list
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
+function nth(list, num) {
+  if (!list){
+    return undefined;
+  } else if (num === 0){
+    return list.value;
+  } else {
+    return nth(list.rest, num - 1);
+  }
 
 }
 
@@ -103,9 +127,36 @@ function nth() {
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
+function deepEqual(valOne, valTwo) {
+  //check if values directly equal each other
+  if (valOne === valTwo){
+    return true;
+    //check to make sure both values are objects that are not null
+  } else if ( (typeof valOne == "object" && valOne != null) && (typeof valTwo == "object" && valTwo != null) ){
+      // if the objects values lengths are not equal return false
+      if(Object.keys(valOne).length != Object.keys(valTwo).length){
+       return false;}
+        // loop through valOne and compare properties with the properties of valTwo
+        for (var prop in valOne){
+          if (valTwo.hasOwnProperty(prop)){
+            //if the properties dont match return false
+           if (! deepEqual(valOne[prop], valTwo[prop])){
+              return false;
+            }
+            // else return false
+          } else {
+        return false;
+          }
+        
+        }
+        //if it makes it here return true;
+      return true;
+    } else{
+      //if the values are not objects or are null return false.
+      return false;
+    }
+  }
 
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
