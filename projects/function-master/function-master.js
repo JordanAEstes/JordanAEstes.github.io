@@ -166,7 +166,15 @@ var arr = [];
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+//Should take an object, a key and a value.
+//Should update the property <key> on <object> with new <value>. 
+    if (object.hasOwnProperty(key)){
+        object[key] = value;
+    } else {
+        //If <key> does not exist on <object> create it
+        object[key] = value;
+    }
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -174,7 +182,12 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+    for( var i = 0; i < array.length; i++){
+        if(object.hasOwnProperty(array[i])){
+            delete object[array[i]];
+        }
+    }
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -182,6 +195,16 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
+    var newArray =[];
+    for (var i = 0; i < array.length; i++){
+        console.log(array);
+        if(newArray.indexOf(array[i]) == -1){
+            newArray.push(array[i])
+        }
+        
+    }
+    console.log()
+    return newArray;
 
 }
 
