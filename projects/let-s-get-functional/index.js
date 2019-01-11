@@ -3,7 +3,7 @@
 'use strict';
 
 var customers = require('./data/customers.json');
-var _ = require(/* Replace this with the name of your lodown! */);
+var _ = require('lodown-jordanaestes');
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -20,26 +20,136 @@ var _ = require(/* Replace this with the name of your lodown! */);
  */
 
 var maleCount = function(array) {
-
+//find the number of male customers
+var maleCounter = 0;
+_.filter(array, function(element, index, array){
+    if (element.hasOwnProperty('gender') && element['gender'] === 'male'){
+        maleCounter += 1;
+    }
+});
+return maleCounter;
 };
 
-var femaleCount;
+var femaleCount = function(array){
+//find the number of male customers
+var femaleCounter = 0;
+_.filter(array, function(element, index, array){
+    if (element.hasOwnProperty('gender') && element['gender'] === 'female'){
+        femaleCounter += 1;
+    }
+});
+return femaleCounter;
+};
 
-var oldestCustomer;
+var oldestCustomer = function(array){
+//find the name of the oldest customer
+var oldestCust = 0;
+var oldestName = '';
+_.each(array, function(element, index, array){
+    if (element.hasOwnProperty('age')){
+        if (element['age'] > oldestCust){
+            oldestCust = element['age'];
+            oldestName = element['name'];
+        }
+    }
+});
+return oldestName;
+};
 
-var youngestCustomer;
+var youngestCustomer = function(array){
+var youngestCust = 200;
+var youngestName = '';
+_.each(array, function(element, index, array){
+    if (element.hasOwnProperty('age')){
+        if (element['age'] < youngestCust){
+            youngestCust = element['age'];
+            youngestName = element['name'];
+        }
+    }
+});
+return youngestName;
+};   
 
-var averageBalance;
 
-var firstLetterCount;
+var averageBalance = function(array){
+var balanceTotal = 0;
+var numOfAccounts = 0;
+_.each(array, function(element, index, array){
+    if (element.hasOwnProperty('balance')){
+        balanceTotal += parseFloat(element['balance'].replace(/,/g,'').substring(1));
+        numOfAccounts += 1;
+    }
+});
+return (balanceTotal / numOfAccounts);
+};
 
-var friendFirstLetterCount;
+var firstLetterCount = function(array, letter){
+var firstLetterCounter = 0;
+var formattedName = '';
+_.each(array, function(element, index, array){
+    if (element.hasOwnProperty('name')){
+        formattedName = element['name'].toLowerCase().charAt(0);
+        if (formattedName === letter.toLowerCase()){
+             firstLetterCounter += 1;
+        }
+    }
+});
+return firstLetterCounter;
+};
 
-var friendsCount;
+var friendFirstLetterCount = function(array, customer, letter){
+var firstLetterCounter = 0;
+var formattedName = '';
+var friendsArr = []
+_.each(array, function(element, index, array){
+    friendsArr = element['friends'];
+    if (element.name === customer){
+        _.each(friendsArr, function(element, index, friendsArr){
+            if (element.hasOwnProperty('name')){
+                formattedName = element['name'].toLowerCase().charAt(0);
+                if (formattedName === letter.toLowerCase()){
+                    firstLetterCounter += 1;
+                }
+            }
+        });
+        }
+    });
+return firstLetterCounter;
+}
 
-var topThreeTags;
+var friendsCount = function(array, name){
+_.each(array, function(element, index, array){
+    if(element.hasOwnProperty('friends') && element['name'] === element[name]){
+        return element['friends'].length;
+    }
+});
+};
 
-var genderCount;
+var topThreeTags = function(array){
+    
+}
+
+var genderCount = function(array){
+var retObj = {};
+var maleCounter = 0;
+var femaleCounter = 0;
+var transgenderCounter = 0;
+_.filter(array, function(element, index, array){
+    if (element.hasOwnProperty('gender')){ 
+        if (element['gender'] === 'male'){
+            maleCounter += 1;
+        } else if (element['gender'] === 'female'){
+            femaleCounter += 1;
+        } else {
+            transgenderCounter += 1;
+        }
+    }
+});
+retObj.male = maleCounter;
+retObj.female = femaleCounter;
+retObj.transgender = transgenderCounter;
+return retObj;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
