@@ -12,6 +12,7 @@
 *       i.  Object - groups of key value pairs
 *       ii. Array - values stored in a zero indexed list
 *       iii.Function - stores blocks of statements
+*   3. Copy by Value vs Copy by Reference
 */
 
 
@@ -101,6 +102,35 @@ console.log(-Infinity / 3);
 console.log(-Infinity * -3);
 console.log(-Infinity / -3);
 
-/*COPY BY VALUE AND COPY BY REFERENCE
+/* 3. COPY BY VALUE AND COPY BY REFERENCE
 * simple data types are copied by value complex data types are copied by reference
+* when simple data types are assigned to a variable they are copied by value, so the variable actually holds a copy of the 
+* value.  This means that each variable assigned to a simple data type holds its own unique value.
 */
+// a set of variables are assigned values
+var exampleNumber = 10;
+
+//another set of variables are assigned copys of the previous variables values
+var x = exampleNumber;
+
+//if you change the original variable, the new variable will still hold onto their original values.
+
+exampleNumber = exampleNumber + 5;
+
+console.log(exampleNumber, x)
+
+//this will log to '15 10', because the value of x is unchanged, while the value of exampleNumber has been changed.
+
+//for complex data types values are copied by reference, meaning the variable names just point to the same objects,
+//if the original object changes, the copied objects will change too
+
+var array = [1];
+var refArray = array;
+
+//if we change array refArray will change also
+
+array.push(42);
+
+console.log(refArray);
+
+//this will log '[1, 42]' because refArray is just pointing to the original array's values.

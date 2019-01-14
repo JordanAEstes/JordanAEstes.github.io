@@ -69,11 +69,12 @@ const PI = 3.14159;
 
 /* variables declared with var are hoisted, meaning they are moved to the top of whatever black they are scoped to
 * let and const variables are not hoisted. */
+var firstVar = true; 
+doThis(firstVar);
+
 
 function doThis(testVar){
     return testVar;
 }
 
-doThis(firstVar);
-var firstVar = true; 
-// even though this line is below the function call it gets hoisted to the top of the block its in, then the function is called.
+// even though the function is defined after the call, the function definition is hoisted so it can be called anywhere in the program.

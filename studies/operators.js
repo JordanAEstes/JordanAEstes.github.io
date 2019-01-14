@@ -135,7 +135,8 @@ var y;
     
 // 3. COMPARISON OPERATORS
 //
-//  i. == - equal to compares the values of two things, but doesn't compare type
+//  i. == - loose equals to compares the values of two things, but doesn't compare type. If the two types are different
+// it attempts to convert the types of one of the values to match the other.
     
     5 == '5'; //returns true because the values are the same
 
@@ -205,7 +206,7 @@ var y;
     };
         delete testObj.nameLast; //deletes the key value pair at the key 'nameLast'
         
-    var testArr = [1, 2, 3, 4, 5, 6];
+    var testArr = [1, 2, 3, 4, 5, 6]; // if you log this to the console it will log [1, 2, 3, 4, 5, 6]
     
         delete testArr[2]; // deletes the value '3' at index '2'
         

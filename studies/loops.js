@@ -25,7 +25,7 @@
     
 //  ii. While Loops - repeats a block of code until a certain condtion is met
     
-    var x;
+    var x = 0;
     while(x < 3){//check if x is still less than 3, if it is then execute the code block.
         x++;//increment the counter so the final condition can be met
     }

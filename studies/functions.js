@@ -87,13 +87,24 @@
     
     console.log(returnFunc(4, 5));// logs the return value from the function, in this case 9
 
+// return statements arent always necissary. If the function is just manipulating a global variable nothing really needs to be returned
+    
+    var testNum = 2
+    function changeTestNum(newNum){
+        testNum = testNum * newNum;
+    }
+    
+    changeTestNum(4);
+    
+    console.log(testNum);
+// this will log to '8' because we have used the function to change the value of testNum.
 
 
 
 // 6. SCOPE
 //  i. Scope - scope refers to block of code a variable is declared in.  If the variable is declared in the main body
 //      of the code it is said to have global scope.  If a varibale is declared within a function it is said to have
-//      local scope
+//      local scope.  Local scopes have access to globaly scoped variables, but not the other way around.
 
     var globalVar = 54 // this is a global variable
     

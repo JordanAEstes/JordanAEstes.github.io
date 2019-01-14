@@ -22,7 +22,8 @@
     
     
     
-// 2. WITH STRING METHODS
+// 2. WITH STRING METHODS - string methods are considered pure because they return a new value, and do not change the value
+// of the existing string.
 var methodStr = 'This is the method string it is to test methods on a string';
 //  i. length - returns the length of a string
     
