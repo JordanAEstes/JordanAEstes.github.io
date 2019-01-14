@@ -118,15 +118,48 @@ return firstLetterCounter;
 }
 
 var friendsCount = function(array, name){
+var customersNames = [];
+var friendsArr = []
+if(name === undefined){
+    return customersNames;
+}
 _.each(array, function(element, index, array){
-    if(element.hasOwnProperty('friends') && element['name'] === element[name]){
-        return element['friends'].length;
-    }
+    friendsArr = element.friends;
+    _.each(friendsArr, function(ele, ind, arr){
+        if(friendsArr[ind].name === name){
+            customersNames.push(element.name);
+        }
+    })
 });
+return customersNames;
 };
 
 var topThreeTags = function(array){
-    
+var concatArray = [];
+var currentArray = [];
+var count = {};
+var cnt =  0;
+var current = null;
+var tagsSorted = [];
+var retArray = [];
+_.each(array, function(element, index, array){
+    concatArray = concatArray.concat(array[index].tags);
+})
+concatArray.sort();
+_.each(concatArray, function(element, index, array){
+    if (concatArray[index] != current) {
+            if (cnt > 0) {
+                count[current] = cnt;
+            }
+            current = concatArray[index];
+            cnt = 1;
+    } else {
+        cnt++;
+    }
+})
+tagsSorted = Object.keys(count).sort(function(a,b){return count[b]-count[a]});
+retArray.push(tagsSorted[0], tagsSorted[1], tagsSorted[2])
+return retArray;
 }
 
 var genderCount = function(array){
