@@ -110,7 +110,7 @@
     
     function localFunc(paramOne){
         var localVar = 23;// this is a local variable.
-        return localVar + paramOne;
+        return localVar + globalVar; // we have access to globalVar because its a global variable.
     }
     
 

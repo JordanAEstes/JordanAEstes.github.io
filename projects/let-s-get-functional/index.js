@@ -31,28 +31,32 @@ return maleCounter;
 };
 
 var femaleCount = function(array){
-//find the number of male customers
+//find the number of female customers
 var femaleCounter = 0;
-_.filter(array, function(element, index, array){
-    if (element.hasOwnProperty('gender') && element['gender'] === 'female'){
-        femaleCounter += 1;
+return _.reduce(array, function(acc, person, index){
+    if (person.hasOwnProperty('gender') && person['gender'] === 'female'){
+        acc += 1;
     }
-});
-return femaleCounter;
+    return acc;
+}, 0);
 };
 
+
+
 var oldestCustomer = function(array){
-//find the name of the oldest customer
-var oldestCust = 0;
 var oldestName = '';
-_.each(array, function(element, index, array){
-    if (element.hasOwnProperty('age')){
-        if (element['age'] > oldestCust){
-            oldestCust = element['age'];
-            oldestName = element['name'];
+//find the name of the oldest customer
+_.reduce(array, function(acc, person, index){
+    if(person.hasOwnProperty('age')){
+        if(person.age > acc){
+            acc = person.age;
+            oldestName = person.name;
+            
         }
     }
-});
+    console.log(oldestName);
+    return acc;
+}, 0)
 return oldestName;
 };
 
@@ -157,7 +161,7 @@ _.each(concatArray, function(element, index, array){
         cnt++;
     }
 })
-tagsSorted = Object.keys(count).sort(function(a,b){return count[b]-count[a]});
+tagsSorted = Object.keys(count).sort(function(a, b){ return count[b] - count[a] });
 retArray.push(tagsSorted[0], tagsSorted[1], tagsSorted[2])
 return retArray;
 }

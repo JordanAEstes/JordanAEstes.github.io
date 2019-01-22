@@ -504,7 +504,7 @@ _.reduce = function(array, func, seed){
         prevResult = func(prevResult, array[i], i)
     }
     //return retVal
-    console.log(retVal);
+    //console.log(retVal);
     return prevResult;
 }
 

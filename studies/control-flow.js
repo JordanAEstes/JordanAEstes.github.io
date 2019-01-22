@@ -2,7 +2,7 @@
 *
 * 1. if/else if/else - runs a series of boolean checks to see if certain conditons are met.
 * 2. switch - compares a specific value to a series of cases
-*
+* 3. exception handling - try catch statements control flow by handling exceptions 
 *
 *
 *
@@ -63,4 +63,18 @@
         default : // this is the default that catches everything else if nothing matches the expression.
             console.log('nothing else matched');
     }
+    
+// 3. EXCEPTION HANDLING
+// i. try block - a block of code that could possibly throw an error
+
+    try{
+        //code that could throw and error
+    }
+    
+// ii. catch block - catches the error and handles it.
+    
+    catch(e){
+        // code that handles the error and logs it.
+    }
+
     
